@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Hide xterm.js scrollbars */
+.xterm .xterm-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.xterm .xterm-viewport {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE/Edge */
+}

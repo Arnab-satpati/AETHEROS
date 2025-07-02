@@ -1,0 +1,107 @@
+/* LogoLoader.css */
+
+.logo-loader {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  animation: fadeOut 1.2s ease-in-out 9s forwards;
+}
+
+/* Container for logo and text */
+.logo-container {
+  position: relative;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo animation wrapper */
+.logo-animate {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  animation: zoomInOut 10s ease-in-out forwards;
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  filter:
+    drop-shadow(0 0 15px rgba(0, 255, 255, 0.75))
+    drop-shadow(0 0 20px rgba(255, 0, 255, 0.93));
+}
+
+/* Inner image */
+.logo-animate img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Gradient glow behind */
+.logo-animate::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 20%, #00ffff99, transparent 60%),
+    radial-gradient(circle at 80% 80%, #ff00ff99, transparent 60%);
+  filter: blur(60px);
+}
+
+/* Booting text */
+.boot-text {
+  margin-top: 1.5rem;
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: textFadeIn 1.2s ease-in 1.5s forwards;
+}
+
+/* Text fades in */
+@keyframes textFadeIn {
+  to {
+    opacity: 0.8;
+  }
+}
+
+/* Zoom animation for logo */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: scale(0.85);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}
+
+/* Screen fade out */
+@keyframes fadeOut {
+  to {
+    opacity: 0.05;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
