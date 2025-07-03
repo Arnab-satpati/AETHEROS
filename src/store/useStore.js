@@ -12,7 +12,7 @@ export const useStore = create((set) => ({
         id,
         title,
         isMinimized: false,
-        isMaximized: title === "Cook", // Auto maximize Cook
+        isMaximized: title === "Cook" || title === "EdexUI", // Auto maximize Cook and EdexUI
         zIndex: state.zIndexCounter,
       };
       return {

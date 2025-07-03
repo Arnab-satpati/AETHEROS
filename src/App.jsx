@@ -9,6 +9,7 @@ import FileExplorer from "./App/FileExplorer";
 import Terminal from "./App/Terminal";
 import Browser from "./App/Browser";
 import Cook from "./App/Cook";
+import EdexUI from "../src/components/EdexUI"; // Import EdexUI component
 
 import { useStore } from "./store/useStore";
 import clsx from "clsx";
@@ -34,6 +35,8 @@ function App() {
         return <Cook />;
       case "Browser":
         return <Browser />;
+      case "EdexUI":
+        return <EdexUI />; // Render EdexUI component 
       default:
         return <div>{title} App</div>;
     }

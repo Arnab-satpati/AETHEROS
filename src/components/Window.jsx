@@ -16,7 +16,8 @@ const Window = ({
   const toggleMaximize = useStore((s) => s.toggleMaximize);
   const focusWindow = useStore((s) => s.focusWindow);
 
-  const isResizable = title !== "Cook";
+  const isResizable = title !== "Cook" && title !== "EdexUI"; // 🔒 EdexUI not resizable
+  const isDraggable = isResizable; // Disable dragging for EdexUI too
   const rndRef = useRef(null);
 
   const [position, setPosition] = useState({ x: 10, y: 27 });
@@ -63,7 +64,7 @@ const Window = ({
       style={{ zIndex }}
       dragHandleClassName="handle"
       enableResizing={isResizable}
-      disableDragging={!isResizable}
+      disableDragging={!isDraggable}
       className={clsx(
         "absolute",
         "rounded-lg border border-white/50 backdrop-blur-md",
@@ -75,14 +76,14 @@ const Window = ({
         {/* Left Side (Title) */}
         <div className="text-sm font-semibold tracking-wide z-10">{title}</div>
 
-        {/* Center (Glowing Prompt for Terminal) */}
+        {/* Center (Terminal Prompt) */}
         {isTerminal && (
           <div className="absolute left-1/2 -translate-x-1/2 text-sm font-bold font-mono text-center z-0 text-[#ff0fff]" style={{ textShadow: "0 0 6px #ff00e9" }}>
             Arnab@AetherOS
           </div>
         )}
 
-        {/* Right Side (Buttons) */}
+        {/* Right Side (Window Controls) */}
         <div className="flex gap-2 items-center z-10">
           <button
             onClick={() => toggleMinimize(id)}

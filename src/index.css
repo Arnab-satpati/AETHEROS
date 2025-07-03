@@ -12,3 +12,34 @@
   scrollbar-width: none;        /* Firefox */
   -ms-overflow-style: none;     /* IE/Edge */
 }
+
+.thin-thumb::-webkit-slider-thumb {
+  width: 6px;       /* 👈 thin width */
+  height: 16px;     /* optional: tall for better UX */
+  background: #3b82f6;
+  border-radius: 4px;
+  cursor: pointer;
+  appearance: none;
+  margin-top: -6px; /* align with track */
+}
+
+.thin-thumb::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #cccccc;
+  border-radius: 999px;
+}
+
+.thin-thumb::-moz-range-thumb {
+  width: 6px;
+  height: 16px;
+  background: #3b82f6;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+.thin-thumb::-moz-range-track {
+  height: 4px;
+  background: #ccc;
+  border-radius: 999px;
+}
+
