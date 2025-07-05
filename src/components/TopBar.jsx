@@ -159,7 +159,7 @@ const TopBar = () => {
           </div>
 
           {showSystemDropdown && (
-            <div className="absolute bg-black right-0 mt-2 w-72 bg-gray-900/50 backdrop-blur-sm rounded-3xl p-4 border border-gray-800/50 hover:border-purple-500/30 transition-all duration-300 group overflow-hidden">
+            <div className="absolute bg-black right-0 mt-2 w-72  backdrop-blur-sm rounded-3xl p-4 border border-gray-800/50 hover:border-purple-500/30 transition-all duration-300 group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all duration-300"></div>
               <div className="space-y-4 relative z-10">
