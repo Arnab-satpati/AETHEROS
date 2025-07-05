@@ -233,10 +233,9 @@ const GlobeGeometry = () => {
   const meshRef = useRef();
   const pointsRef = useRef();
 
-  // Load the Earth texture for a more realistic globe
-  const earthTexture = useLoader(TextureLoader, 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_atmos_2048.jpg');
+  // ✅ Use uploaded image as Earth texture
+  const earthTexture = useLoader(TextureLoader, '/image.png');
 
-  // Create connection points on globe
   const connectionPoints = [
     { lat: 40.7128, lng: -74.0060, name: 'NYC', color: '#00ff88' },
     { lat: 51.5074, lng: -0.1278, name: 'LON', color: '#0088ff' },
@@ -248,7 +247,6 @@ const GlobeGeometry = () => {
   const latLngToVector3 = (lat, lng, radius = 1) => {
     const phi = (90 - lat) * (Math.PI / 180);
     const theta = (lng + 180) * (Math.PI / 180);
-
     return new THREE.Vector3(
       -radius * Math.sin(phi) * Math.cos(theta),
       radius * Math.cos(phi),
@@ -256,13 +254,9 @@ const GlobeGeometry = () => {
     );
   };
 
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.005;
-    }
-    if (pointsRef.current) {
-      pointsRef.current.rotation.y += 0.005;
-    }
+  useFrame(() => {
+    if (meshRef.current) meshRef.current.rotation.y += 0.005;
+    if (pointsRef.current) pointsRef.current.rotation.y += 0.005;
   });
 
   return (
@@ -270,13 +264,10 @@ const GlobeGeometry = () => {
       <Sphere ref={meshRef} args={[1, 64, 64]}>
         <meshStandardMaterial
           map={earthTexture}
-          color="#ffffff" // Base color (texture will override much of this)
-          wireframe={false}
-          transparent={true} // Set to true for glass effect
-          opacity={0.95} // Increased opacity for lighter look
-          roughness={0.2} // Low roughness for reflective glass
-          metalness={0.5} // Some metalness to enhance reflections
-          envMapIntensity={1.2} // Increased envMapIntensity for brighter reflections
+          transparent={true}
+          opacity={0.95}
+          roughness={0.3}
+          metalness={0.5}
         />
       </Sphere>
 
@@ -330,13 +321,24 @@ const GlobeGeometry = () => {
 const Globe3D = () => {
   return (
     <Canvas camera={{ position: [0, 0, 2.5], fov: 60 }}>
-      <ambientLight intensity={0.8} /> {/* Increased ambient light intensity */}
-      <pointLight position={[10, 10, 10]} intensity={1.6} /> {/* Increased point light intensity */}
+      {/* 🌞 Ambient light - general scene brightness */}
+      <ambientLight intensity={1.2} />
+
+      {/* 💡 Point light - simulates a light bulb */}
+      <pointLight position={[5, 5, 5]} intensity={2.5} color="#ffffff" />
+
+      {/* 🔆 Directional light - acts like sunlight */}
+      <directionalLight position={[-3, 2, 1]} intensity={2} color="#ffffff" castShadow />
+
+      {/* ✨ Stars in the background */}
       <Stars radius={300} depth={60} count={1000} factor={7} saturation={0} fade />
+
+      {/* 🌍 The globe itself */}
       <GlobeGeometry />
     </Canvas>
   );
 };
+
 
 // Main EdexUI Component
 const EdexUI = () => {
