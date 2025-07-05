@@ -168,26 +168,26 @@ const TopBar = () => {
                     <span className="text-xs">Volume</span>
                     <Volume2 size={14} />
                   </label>
-                  <input type="range" min={0} max={100} value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-blue-500 h-1 rounded-full" />
+                  <input type="range" min={0} max={100} value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-[#bb29c1] h-1 rounded-full" />
                 </div>
                 <div>
                   <label className="flex justify-between items-center mb-1">
                     <span className="text-xs">Brightness</span>
                     <Sun size={14} />
                   </label>
-                  <input type="range" min={0} max={100} value={brightness} onChange={(e) => setBrightness(Number(e.target.value))} className="w-full accent-yellow-400 h-1 rounded-full" />
+                  <input type="range" min={0} max={100} value={brightness} onChange={(e) => setBrightness(Number(e.target.value))} className="w-full accent-[#b50069] h-1 rounded-full" />
                 </div>
                 <hr className="border-gray-600" />
                 <div className="space-y-2">
-                  <a href="#" className="flex items-center justify-between hover:text-blue-400 transition">
+                  <a href="https://github.com/Arnab-satpati" target="_blank" className="flex items-center justify-between hover:text-[#bb29c1] transition">
                     <span className="flex items-center gap-2"><i className="ri-github-fill"></i> GitHub</span>
                     <span>{">"}</span>
                   </a>
-                  <a href="#" className="flex items-center justify-between hover:text-pink-400 transition">
+                  <a href="#" className="flex items-center justify-between hover:text-[#da3775] transition">
                     <span className="flex items-center gap-2"><i className="ri-instagram-fill"></i> Instagram</span>
                     <span>{">"}</span>
                   </a>
-                  <a href="#" className="flex items-center justify-between hover:text-sky-400 transition">
+                  <a href="https://www.linkedin.com/in/arnab-satpati/" className="flex items-center justify-between hover:text-[#bb29c1] transition">
                     <span className="flex items-center gap-2"><i className="ri-linkedin-box-fill"></i> LinkedIn</span>
                     <span>{">"}</span>
                   </a>

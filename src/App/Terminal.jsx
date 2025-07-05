@@ -234,22 +234,26 @@ const Terminal = () => {
           </span>
           <span className="text-gray-400">────────────────────────────</span>
           <span>
+            <a href="https://github.com/arnab-satpati">
             <i className="ri-github-fill" style={{ fontSize: "16px" }}></i> GitHub →{" "}
             <span className="text-cyan-300 cursor-pointer hover:text-red-300">
-              github.com/yourhandle
+              github.com/arnab-satpati
             </span>
+            </a>
           </span>
           <span>
-            <i className="ri-linkedin-fill" style={{ fontSize: "16px" }}></i> LinkedIn →{" "}
+            <a href="https://linkedin.com/in/arnab-satpati"><i className="ri-linkedin-fill" style={{ fontSize: "16px" }}></i> LinkedIn →{" "}
             <span className="text-cyan-300 cursor-pointer hover:text-red-300">
-              linkedin.com/in/yourhandle
-            </span>
+              linkedin.com/in/arnab-satpati
+            </span></a>
           </span>
           <span>
-            <i className="ri-instagram-fill" style={{ fontSize: "16px" }}></i> Instagram →{" "}
+            <a href="#" >
+              <i className="ri-instagram-fill" style={{ fontSize: "16px" }}></i> Instagram →{" "}
             <span className="text-cyan-300 cursor-pointer hover:text-red-300">
               instagram.com/yourhandle
             </span>
+            </a>
           </span>
         </div>
       </div>

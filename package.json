@@ -13,6 +13,7 @@
     "@fontsource/ubuntu": "^5.2.6",
     "@react-three/drei": "^10.4.2",
     "@react-three/fiber": "^9.2.0",
+    "@vscode/codicons": "^0.0.36",
     "clsx": "^2.1.1",
     "framer-motion": "^12.20.1",
     "lucide-react": "^0.525.0",
