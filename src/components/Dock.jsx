@@ -6,6 +6,7 @@ import terminalIcon from "../assets/icons/terminal-app.png";
 import filesIcon from "../assets/icons/user-home.png";
 import cookIcon from "../assets/icons/logo_browse.png";
 import browserIcon from "../assets/icons/brave-logo.svg";
+import SheryIcon from "../assets/icons/SheryIcon.png"
 
 const Dock = () => {
   const openApp = useStore((s) => s.openApp);
@@ -19,6 +20,7 @@ const Dock = () => {
     { name: "Files", icon: filesIcon },
     { name: "Cook", icon: cookIcon },
     { name: "Browser", icon: browserIcon },
+    { name: "Shery", icon: SheryIcon },
   ];
 
   return (

@@ -12,7 +12,7 @@ export const useStore = create((set) => ({
         id,
         title,
         isMinimized: false,
-        isMaximized: title === "Cook" || title === "EdexUI", // Auto maximize Cook and EdexUI
+        isMaximized: title === "Cook" || title === "EdexUI",
         zIndex: state.zIndexCounter,
       };
       return {
@@ -47,4 +47,27 @@ export const useStore = create((set) => ({
         win.id === id ? { ...win, isMaximized: !win.isMaximized } : win
       ),
     })),
+
+  // Desktop file/folder system
+  desktopItems: [],
+  addDesktopItem: (item) =>
+    set((state) => ({
+      desktopItems: [...state.desktopItems, item],
+    })),
+
+  renameDesktopItem: (id, newName) =>
+    set((state) => ({
+      desktopItems: state.desktopItems.map((item) =>
+        item.id === id ? { ...item, name: newName, isEditing: false } : item
+      ),
+    })),
+
+  deleteDesktopItem: (id) =>
+    set((state) => ({
+      desktopItems: state.desktopItems.filter((item) => item.id !== id),
+    })),
+
+  isActivitiesMode: false,
+  setActivitiesMode: () =>
+    set((state) => ({ isActivitiesMode: !state.isActivitiesMode })),
 }));
