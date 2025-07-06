@@ -140,7 +140,6 @@ const TopBar = () => {
           <button onClick={setActivitiesMode} className="hover:bg-[#80808069] px-2 py-[1px] rounded-[999px]">Activities</button>
           {title && (
             <div className="flex items-center gap-2 text-gray-300">
-              <span className="text-xs">⛶</span>
               <span>{title}</span>
             </div>
           )}

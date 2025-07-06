@@ -173,8 +173,8 @@ export default DesktopIcon;
   const LogoLoader = ({ onFinish }) => {
     useEffect(() => {
       const timer = setTimeout(() => {
-        onFinish(); // Hide loader after animation
-      }, 10000); // ⏱️ Matches total animation time
+        onFinish();
+      }, 10000);
   
       return () => clearTimeout(timer);
     }, [onFinish]);
@@ -328,7 +328,6 @@ const TopBar = () => {
   return (
     <>
       <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none", backgroundColor: "rgba(0,0,0," + (100 - brightness) / 100 + ")", zIndex: 9998 }} />
-      {/* The rest of the JSX stays as is with no backticks */}
     </>
   );
 };

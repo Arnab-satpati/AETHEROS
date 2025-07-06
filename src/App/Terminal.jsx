@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useStore } from "../store/useStore"; // ✅ Make sure this path is correct
+import { useStore } from "../store/useStore";
 
 const Terminal = () => {
   const [lines, setLines] = useState([]);
@@ -11,16 +11,16 @@ const Terminal = () => {
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
 
-  const openApp = useStore((state) => state.openApp); // ✅ access app-opening logic
+  const openApp = useStore((state) => state.openApp);
 
   const bio = [
     " ",
     <span key="bio-glow">
-    Hi, I'm{" "}
-    <span style={{ color: "#ff4bff", textShadow: "0px 0px 8px #ff00e9" }}>
-      Arnab Satpati
-    </span>.
-  </span>,
+      Hi, I'm{" "}
+      <span style={{ color: "#ff4bff", textShadow: "0px 0px 8px #ff00e9" }}>
+        Arnab Satpati
+      </span>.
+    </span>,
     "Full Stack Developer | Designer | Innovator.",
     "Passionate about intuitive UI & powerful backends.",
     "Obsessed with Ubuntu-style desktops and terminal aesthetics.",
@@ -36,14 +36,22 @@ const Terminal = () => {
       "- reload → Reload hint message",
       "- clear → Clear terminal",
       "- cook → Open cooking website",
+      "- camera → Launch Camera App",
+      "- files → Open File Explorer",
+      "- browser → Open Web Browser",
+      "- shery → Open Shery Project",
     ],
     about: bio,
     reload: "reload",
     clear: "clear",
     cook: "open-cook",
+    camera: "open-camera",
+    files: "open-FileExplorer",
+    browser: "open-browser",
+    shery: "open-shery",
   };
 
-  const glowKeywords = ["about", "help", "reload", "clear", "y", "n", "cook"];
+  const glowKeywords = ["about", "help", "reload", "clear", "y", "n", "cook", "camera", "files", "browser", "shery"];
 
   useEffect(() => {
     boot();
@@ -63,11 +71,7 @@ const Terminal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const rawCommand = input.trim();
-
-    if (!rawCommand) {
-      setInput("");
-      return;
-    }
+    if (!rawCommand) return setInput("");
 
     const command = rawCommand.toLowerCase();
     setLines((prev) => [...prev, `${promptLine()}${rawCommand}`]);
@@ -100,14 +104,24 @@ const Terminal = () => {
     } else if (command === "reload") {
       boot();
     } else if (command === "about") {
-      const output = bio.map((line) => line);
-      setLines((prev) => [...prev, ...output]);
+      setLines((prev) => [...prev, ...bio]);
     } else if (command === "cook") {
       setLines((prev) => [...prev, "> Opening cooking website..."]);
-      openApp("Cook"); // ✅ opens the floating window like in Dock
+      openApp("Cook");
+    } else if (command === "camera") {
+      setLines((prev) => [...prev, "> Launching camera..."]);
+      openApp("Camera");
+    } else if (command === "files") {
+      setLines((prev) => [...prev, "> Opening file explorer..."]);
+      openApp("Files");
+    } else if (command === "browser") {
+      setLines((prev) => [...prev, "> Opening browser..."]);
+      openApp("Browser");
+    } else if (command === "shery") {
+      setLines((prev) => [...prev, "> Opening Shery Project..."]);
+      openApp("Shery");
     } else if (Array.isArray(result)) {
-      const output = result.map((line) => `> ${line}`);
-      setLines((prev) => [...prev, ...output]);
+      setLines((prev) => [...prev, ...result.map((line) => `> ${line}`)]);
     } else if (typeof result === "string") {
       setLines((prev) => [...prev, `> ${result}`]);
     } else {
@@ -124,7 +138,6 @@ const Terminal = () => {
     const cmds = Object.keys(commands);
     let closest = null;
     let minDist = Infinity;
-
     for (let c of cmds) {
       const dist = levenshtein(cmd, c);
       if (dist < minDist && dist <= 3) {
@@ -173,8 +186,7 @@ const Terminal = () => {
       }
     } else if (e.key === "ArrowDown") {
       if (history.length > 0) {
-        const newIndex =
-          historyIndex === -1 || historyIndex === history.length - 1 ? -1 : historyIndex + 1;
+        const newIndex = historyIndex === -1 || historyIndex === history.length - 1 ? -1 : historyIndex + 1;
         setInput(newIndex === -1 ? "" : history[newIndex]);
         setHistoryIndex(newIndex);
       }
@@ -216,7 +228,6 @@ const Terminal = () => {
       style={{ backgroundColor: "transparent" }}
       onClick={() => inputRef.current?.focus()}
     >
-      {/* Static Banner and Info */}
       <div className="flex flex-col sm:flex-row gap-20 mb-4">
         <div className="text-[10px] leading-[12px] text-white font-mono">
           <pre>{`
@@ -229,30 +240,25 @@ const Terminal = () => {
         </div>
         <div className="text-sm text-white font-mono flex flex-col gap-1">
           <span className="text-cyan-300">
-            <i className="ri-id-card-fill" style={{ fontSize: "16px", color: "white" }}></i>{" "}
-            Arnab Satpati
+            <i className="ri-id-card-fill" /> Arnab Satpati
           </span>
           <span className="text-gray-400">────────────────────────────</span>
           <span>
             <a href="https://github.com/arnab-satpati">
-            <i className="ri-github-fill" style={{ fontSize: "16px" }}></i> GitHub →{" "}
-            <span className="text-cyan-300 cursor-pointer hover:text-red-300">
-              github.com/arnab-satpati
-            </span>
+              <i className="ri-github-fill" /> GitHub →{" "}
+              <span className="text-cyan-300 hover:text-red-300">github.com/arnab-satpati</span>
             </a>
           </span>
           <span>
-            <a href="https://linkedin.com/in/arnab-satpati"><i className="ri-linkedin-fill" style={{ fontSize: "16px" }}></i> LinkedIn →{" "}
-            <span className="text-cyan-300 cursor-pointer hover:text-red-300">
-              linkedin.com/in/arnab-satpati
-            </span></a>
+            <a href="https://linkedin.com/in/arnab-satpati">
+              <i className="ri-linkedin-fill" /> LinkedIn →{" "}
+              <span className="text-cyan-300 hover:text-red-300">linkedin.com/in/arnab-satpati</span>
+            </a>
           </span>
           <span>
-            <a href="#" >
-              <i className="ri-instagram-fill" style={{ fontSize: "16px" }}></i> Instagram →{" "}
-            <span className="text-cyan-300 cursor-pointer hover:text-red-300">
-              instagram.com/yourhandle
-            </span>
+            <a href="#">
+              <i className="ri-instagram-fill" /> Instagram →{" "}
+              <span className="text-cyan-300 hover:text-red-300">instagram.com/yourhandle</span>
             </a>
           </span>
         </div>

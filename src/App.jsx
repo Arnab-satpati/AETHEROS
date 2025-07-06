@@ -18,6 +18,7 @@ import clsx from "clsx";
 import { v4 as uuidv4 } from "uuid";
 import { Rnd } from "react-rnd";
 import "./LogoLoader.css";
+import CameraApp from "./App/Camera";
 
 function App() {
   const windows = useStore((s) => s.windows);
@@ -55,13 +56,15 @@ function App() {
         return <EdexUI />;
       case "Shery":
         return <Shery />;
+      case "Camera":
+        return <CameraApp/>
       default:
         return <div>{title} App</div>;
     }
   };
 
   const handleContextMenu = (e, targetId = null, type = "desktop") => {
-    // e.preventDefault();
+    e.preventDefault();
     setContextMenu({
       visible: true,
       x: e.clientX,

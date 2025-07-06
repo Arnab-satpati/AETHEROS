@@ -1,0 +1,75 @@
+.camera-ui {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease-out;
+}
+/* Custom Select Styling */
+.camera-ui select {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='white' viewBox='0 0 20 20'%3E%3Cpath d='M7 7l3-3 3 3z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  transition: background 0.3s ease-in-out;
+}
+
+.camera-ui select:focus {
+  outline: none;
+  border-color: #aaa;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Camera Filters */
+.grayscale {
+  filter: grayscale(100%);
+}
+.sepia {
+  filter: sepia(100%);
+}
+.invert {
+  filter: invert(100%);
+}
+.contrast {
+  filter: contrast(200%);
+}
+.hue {
+  filter: hue-rotate(90deg);
+}
+
+/* Scrollbar in gallery */
+.gallery::-webkit-scrollbar {
+  height: 6px;
+}
+.gallery::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+/* Glow button */
+.camera-button {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
+}
