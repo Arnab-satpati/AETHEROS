@@ -124,7 +124,7 @@ function App() {
       )}
       style={{
         backgroundImage:
-          "url('https://cosmicwanderer7.github.io/Terminal-Portfolio/assets/beautiful-anime-street-scenery-cherry-blossom-kimono-uhdpaper.com-4K-6.1621.jpg')",
+          "url('https://cosmicwanderer7.github.io/Terminal-Portfolio/assets/beautifullanimestreetscenerycherryblossom.webp')",
         backgroundSize: "cover",
       }}
       onContextMenu={(e) => handleContextMenu(e, null, "desktop")}
